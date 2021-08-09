@@ -45,7 +45,7 @@ const Header = () => {
                         dispatch(getQuery(''));
                     }}>
                     <img
-                        src={logo}
+                        src="https://www.dawnfoods.com/Frontend-Assembly/Telerik.Sitefinity.Frontend.Navigation/assets/dist/images/logo.png?package=Dawn"
                         alt="logo"
                         className="logo"
                         onClick={() => {
