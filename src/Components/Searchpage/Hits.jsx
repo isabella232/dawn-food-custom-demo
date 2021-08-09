@@ -30,6 +30,11 @@ const Hits = ({ hits }) => {
         <ul className="hits-list">
           {hits.map((hit) => {
             if (hit.prices) {
+              console.log(
+                "HIT",
+                Object.values(hit.prices)[Object.values(hit.prices).length - 1]
+                  .salesPrice
+              );
               return (
                 <motion.li
                   key={hit.objectID}

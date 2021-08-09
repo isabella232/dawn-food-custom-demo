@@ -50,9 +50,9 @@ const SearchResults = () => {
 
   const filterConfigure = () => {
     // Const Inventory
-    const inventory = `prices.${customer}.salesPrices`;
-    console.log("INVENTORY", inventory)
-    return inventory
+    const inventory = `users.${customer}`;
+    console.log("INVENTORY", inventory);
+    return inventory;
   };
 
   return (
@@ -102,14 +102,21 @@ const SearchResults = () => {
 
           <div className="searchPanel-results">
             {customer ? (
-              <Configure
-                userToken={customer}
-                filters={filterConfigure()}
-                // enablePersonalization={true}
-                hitsPerPage={21}
-              />
+              <Index indexName={window.usersId}>
+                <Configure
+                  userToken={customer}
+                  filters={filterConfigure()}
+                  // enablePersonalization={true}
+                  hitsPerPage={21}
+                />
+                <CustomSuggestions />
+              </Index>
             ) : (
-              ""
+              <Configure
+                  userToken={customer}
+                  // enablePersonalization={true}
+                  hitsPerPage={21}
+                />
             )}
             {searchVisible ? (
               <Configure

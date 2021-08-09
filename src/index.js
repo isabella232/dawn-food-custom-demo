@@ -27,6 +27,9 @@ window.index_desc = 'dawn_transformed_price_dsc'
 // QUERY SUGG
 window.indexSugg = 'dawn_transformed_query_suggestions'
 
+// USER ID
+window.usersId = 'dawn_transformed_users'
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
