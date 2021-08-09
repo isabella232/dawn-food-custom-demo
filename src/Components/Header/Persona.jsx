@@ -5,9 +5,9 @@ import { selectCustomer } from "../../actions/selectCustomer";
 
 const SelectCustomer = () => {
   const options = [
-    { value: "1013461", label: "TIFFANY" },
-    { value: "1018562", label: "BEN" },
-    { value: "1005538", label: "MARC" },
+    { value: "1018356", label: "TIFFANY" },
+    { value: "1017523", label: "BEN" },
+    { value: "1012818", label: "MARC" },
   ];
 
   //STYLE SELECT

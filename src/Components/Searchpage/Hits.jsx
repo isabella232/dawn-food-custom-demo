@@ -10,6 +10,7 @@ import {
 import ProductDetails from "../ProductsDetails/ProductsDetails";
 
 import { motion, AnimateSharedLayout } from "framer-motion";
+import { object } from "prop-types";
 
 // MAIN SEARCH RESULT PAGE + FEDERATED
 const Hits = ({ hits }) => {
@@ -26,31 +27,14 @@ const Hits = ({ hits }) => {
       },
     },
   };
+
+ 
+
   return (
     <AnimateSharedLayout>
       <div className="hits-wrapper">
         <ul className="hits-list">
           {hits.map((hit) => {
-            {
-              /* console.log("HITS", Object.keys(hit.prices)); */
-            }
-            if (hit.prices) {
-              {
-                /* console.log("HITS", hit.prices); */
-              }
-              let hitsArray = {
-                id: Object.keys(hit.prices),
-                price: hit.prices.Object.keys(hit.prices).salesPrice,
-              };
-              console.log("HITS ARRAY", hitsArray);
-
-              {
-                /* console.log(
-                "HIT",
-                Object.values(hit.prices)[Object.values(hit.prices).length - 1]
-                  .salesPrice
-              ); */
-              }
               return (
                 <motion.li
                   key={hit.objectID}
@@ -72,34 +56,13 @@ const Hits = ({ hits }) => {
                     <h3>
                       <Highlight hit={hit} attribute="SELLING NAME" />
                     </h3>
-                    {/* {hitsArray.map((id) => {
-                      console.log("ID", id, customer);
-                      if (id === customer) {
-                        console.log("EGAL");
-                        return (
-                          <p>
-                            $
-                            {
-                              Object.values(hit.prices)[
-                                Object.values(hit.prices).length - 1
-                              ].salesPrice
-                            }
-                          </p>
-                        );
-                      } else {
-                        {
-                          Object.values(hit.prices)[
-                            Object.values(hit.prices).length - 1
-                          ].salesPrice;
-                        }
-                      }
-                    })} */}
+                
+                    <p>${Object.values(hit.prices)[Object.values(hit.prices).length - 1].salesPrice}</p>
+       
                   </div>
                 </motion.li>
               );
-            } else {
-              return "";
-            }
+            
           })}
         </ul>
         <ModalProduct />

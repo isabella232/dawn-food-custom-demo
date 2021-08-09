@@ -48,12 +48,8 @@ const SearchResults = () => {
   const [isDynamicFactesOn, setIsDynamicFactesOn] = useState(false);
   const { customer } = useSelector((state) => state.selectCustomer);
 
-  const filterConfigure = () => {
-    // Const Inventory
-    const inventory = `users.${customer}`;
-    console.log("INVENTORY", inventory);
-    return inventory;
-  };
+
+  
 
   return (
     <div className="searchResult-wrapper">
@@ -101,26 +97,21 @@ const SearchResults = () => {
           <Banner />
 
           <div className="searchPanel-results">
+            )
             {customer ? (
-              <Index indexName={window.usersId}>
-                <Configure
-                  userToken={customer}
-                  filters={filterConfigure()}
-                  // enablePersonalization={true}
-                  hitsPerPage={21}
-                />
-                <CustomSuggestions />
-              </Index>
-            ) : (
               <Configure
-                  userToken={customer}
-                  // enablePersonalization={true}
-                  hitsPerPage={21}
-                />
+                filters={`"users":'${customer}'`}
+                userToken={customer}
+              
+                hitsPerPage={21}
+                query={query}
+              />
+            ) : (
+              ""
             )}
             {searchVisible ? (
               <Configure
-                userToken={customer}
+                // userToken={customer}
                 // enablePersonalization={true}
                 hitsPerPage={21}
                 query={query}
