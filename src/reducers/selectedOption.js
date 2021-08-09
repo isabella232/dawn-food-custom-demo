@@ -1,13 +1,13 @@
 const initState = {
-    persona : null
+    customer : null
 }
 
-const selectedPersona  = (state = initState, action) => {
+const selectCustomer  = (state = initState, action) => {
 switch(action.type){
-    case 'SELECTPERSONA':
+    case 'SELECTCUSTOMER':
         return {
             ...state,
-            persona: action.payload
+            customer: action.payload
         }
         default:
       return { ...state };
@@ -16,4 +16,4 @@ switch(action.type){
 }
 }
 
-export default selectedPersona
+export default selectCustomer
