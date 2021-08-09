@@ -1,38 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
 
 //REACT REDUX CONFIF
-import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
-import rootReducer from "./reducers/indexReducer";
-import { Provider } from "react-redux";
-
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import rootReducer from './reducers/indexReducer'
+import { Provider } from 'react-redux'
 
 // DEV TOOL
-const composeEnchancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnchancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 //CREATE STORE +IMPORT ALL REDUCER IN ONE
-const store = createStore(
-  rootReducer,
-  composeEnchancer(applyMiddleware(thunk))
-);
+const store = createStore(rootReducer, composeEnchancer(applyMiddleware(thunk)))
 
 //CHANGE ME IF USING NEW INDEX
-window.appID = 'JDBD6EJM33'
-window.key = '0fe54b2e3991d370c91376981aff9d48'
-window.index = "rayban_merged"
+window.appID = 'ZBBE3WDH7O'
+window.key = '4e0ef75741d3a0942eb841f6274fb325'
+window.index = 'dawn_transformed'
 
 //SORTBY
-window.index_asc = "rayban_merged_price_asc"
-window.index_desc = "rayban_merged_price_dsc"
+window.index_asc = 'dawn_transformed_price_asc'
+window.index_desc = 'dawn_transformed_price_dsc'
 
 // QUERY SUGG
-window.indexSugg = "rayban_merged_query_suggestions2"
+window.indexSugg = 'dawn_transformed_query_suggestions'
 
 ReactDOM.render(
-<Provider store={store}>
+  <Provider store={store}>
     <App />
-</Provider>, 
-document.getElementById('root'));
+  </Provider>,
+  document.getElementById('root')
+)

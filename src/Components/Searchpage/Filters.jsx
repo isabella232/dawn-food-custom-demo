@@ -428,7 +428,7 @@ const CustomFilters = ({ filterAnim, isDynamicFactesOn, setIsDynamicFactesOn }) 
                 <DynamicFilter setIsDynamicFactesOn={setIsDynamicFactesOn} isDynamicFactesOn={isDynamicFactesOn} />
                 <CustomFrameShapeRefinementList attribute="FrameShapeDescription" />
                 <CustomMaterialRefinementList attribute="FRAMEMATERIAL" />
-                <CustomRangeSlider attribute="price" min={10} max={550} />
+                <CustomRangeSlider attribute="price" />
             </div>
         </div>
 
