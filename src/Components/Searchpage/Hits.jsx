@@ -46,7 +46,7 @@ const dispatch = useDispatch()
                                 <div className="infos">
                                     <h3><Highlight
                                         hit={hit}
-                                        attribute="title"
+                                        attribute="SELLING NAME"
                                     /></h3>
                                     <p>$ {hit.price}.00</p>
                                 </div>
