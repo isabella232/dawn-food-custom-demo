@@ -1,7 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Highlight, SortBy, Stats, connectHits, Index } from "react-instantsearch-dom";
+import {
+  Highlight,
+  SortBy,
+  Stats,
+  connectHits,
+  Configure,
+} from "react-instantsearch-dom";
 import { showModalPDP, productDetail } from "../../actions/productDetail";
 import {
   federatedSearchVisible,
@@ -34,31 +40,14 @@ const Hits = ({ hits }) => {
             {
               /* console.log("HITS", Object.keys(hit.prices)); */
             }
-            if (hit.prices) {
-              {
-                /* console.log("HITS", hit.prices); */
-              }
-              {
-                /* let hitsArray = {
-                id: Object.keys(hit.prices),
-                price: hit.prices.Object.keys(hit.prices).salesPrice,
-              };
-              console.log("HITS ARRAY", hitsArray); */
-              }
-
-              {
-                /* console.log(
-                "HIT",
-                Object.values(hit.prices)[Object.values(hit.prices).length - 1]
-                  .salesPrice
-              ); */
-              }
-
-              {/* CustomerIds array */}
-              let custIdArray = []
-              console.log("HIT", hit.users)
+            if (hit.prices && customer) {
               return (
-                <Index indexName={window.usersId}>
+                <div>
+                  <Configure
+                    filters={`"users":'${parseInt(customer)}'`}
+                    analytics={false}
+                    distinct
+                  />
                   <motion.li
                     key={hit.objectID}
                     variants={listItem}
@@ -79,34 +68,44 @@ const Hits = ({ hits }) => {
                       <h3>
                         <Highlight hit={hit} attribute="SELLING NAME" />
                       </h3>
-                      {/* {hitsArray.map((id) => {
-                      console.log("ID", id, customer);
-                      if (id === customer) {
-                        console.log("EGAL");
-                        return (
-                          <p>
-                            $
-                            {
-                              Object.values(hit.prices)[
-                                Object.values(hit.prices).length - 1
-                              ].salesPrice
-                            }
-                          </p>
-                        );
-                      } else {
-                        {
-                          Object.values(hit.prices)[
-                            Object.values(hit.prices).length - 1
-                          ].salesPrice;
-                        }
-                      }
-                    })} */}
+                      <p>${hit.prices}</p>
                     </div>
                   </motion.li>
-                </Index>
+                </div>
               );
             } else {
-              return "";
+              return (
+                <motion.li
+                  key={hit.objectID}
+                  variants={listItem}
+                  initial="hidden"
+                  animate="show"
+                  className="hit-list"
+                  onClick={() => {
+                    dispatch(productDetail(hit));
+                    dispatch(showModalPDP(true));
+                    dispatch(federatedSearchVisible(false));
+                    dispatch(searchVisible(true));
+                  }}
+                >
+                  <div className="image-wrapper">
+                    <img src={hit.image_link} alt="" />
+                  </div>
+                  <div className="infos">
+                    <h3>
+                      <Highlight hit={hit} attribute="SELLING NAME" />
+                    </h3>
+                    <p>
+                      $
+                      {
+                        Object.values(hit.prices)[
+                          Object.values(hit.prices).length - 1
+                        ].salesPrice
+                      }
+                    </p>
+                  </div>
+                </motion.li>
+              );
             }
           })}
         </ul>

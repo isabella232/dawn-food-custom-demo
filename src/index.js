@@ -18,7 +18,7 @@ const store = createStore(rootReducer, composeEnchancer(applyMiddleware(thunk)))
 //CHANGE ME IF USING NEW INDEX
 window.appID = 'ZBBE3WDH7O'
 window.key = '4e0ef75741d3a0942eb841f6274fb325'
-window.index = 'dawn_transformed'
+window.index = 'dawn_transformed_users'
 
 //SORTBY
 window.index_asc = 'dawn_transformed_price_asc'
@@ -28,7 +28,7 @@ window.index_desc = 'dawn_transformed_price_dsc'
 window.indexSugg = 'dawn_transformed_query_suggestions'
 
 // USER ID
-window.usersId = 'dawn_transformed_users'
+// window.usersId = 'dawn_transformed_users'
 
 ReactDOM.render(
   <Provider store={store}>

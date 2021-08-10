@@ -102,21 +102,14 @@ const SearchResults = () => {
 
           <div className="searchPanel-results">
             {customer ? (
-              <Index indexName={window.usersId}>
-                <Configure
-                  userToken={customer}
-                  filters={filterConfigure()}
-                  // enablePersonalization={true}
-                  hitsPerPage={21}
-                />
-                <CustomSuggestions />
-              </Index>
-            ) : (
               <Configure
-                  userToken={customer}
-                  // enablePersonalization={true}
-                  hitsPerPage={21}
-                />
+                userToken={customer}
+                // enablePersonalization={true}
+                hitsPerPage={21}
+                query={query}
+              />
+            ) : (
+              ""
             )}
             {searchVisible ? (
               <Configure
