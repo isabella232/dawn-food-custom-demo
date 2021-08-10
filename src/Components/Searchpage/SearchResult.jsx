@@ -97,7 +97,6 @@ const SearchResults = () => {
           <Banner />
 
           <div className="searchPanel-results">
-            )
             {customer ? (
               <Configure
                 filters={`"users":'${customer}'`}

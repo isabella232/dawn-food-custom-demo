@@ -49,7 +49,10 @@ const Hits = ({ hits }) => {
                   }}
                 >
                   <div className="image-wrapper">
-                    <img src={hit.image_link} alt="" />
+                    <img
+                      src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                      alt=""
+                    />
                   </div>
                   <div className="infos">
                     <h3>
