@@ -147,6 +147,19 @@ const HitsModal = ({ hits }) => {
                       return <p>${el.salesPrice}</p>;
                     }
                   })}
+                  ,{" "}
+                  {customer ? (
+                    ""
+                  ) : (
+                    <p>
+                      $
+                      {
+                        Object.values(hit.prices)[
+                          Object.values(hit.prices).length - 1
+                        ].salesPrice
+                      }
+                    </p>
+                  )}
                 </div>
               </li>
             );
