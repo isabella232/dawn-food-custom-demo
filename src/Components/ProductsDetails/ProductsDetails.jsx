@@ -42,22 +42,18 @@ const ProductDetails = () => {
               <h3>{product.[ 'SELLING NAME' ]}</h3>
               {/* <p>${product.price}</p> */}
               {Object.values(product.prices).map((el) => {
-                console.log((el.userId === parseInt(customer)))
                       if (el.userId === parseInt(customer)) {
                         return <p>${el.salesPrice}</p>;
-                      } else {
-                        return(
-                        <p>
+                      }
+                    })}
+              {customer ? ('') : ( <p>
                       $
                       {
                         Object.values(product.prices)[
                           Object.values(product.prices).length - 1
                         ].salesPrice
                       }
-                    </p>
-                        )
-                      }
-                    })}
+                    </p>)}
                     {/* {Object.values(hit.prices).map((el) => {
                     if (el.userId === parseInt(customer)) {
                       return <p>${el.salesPrice}</p>;
