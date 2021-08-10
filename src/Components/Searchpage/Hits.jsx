@@ -70,6 +70,11 @@ const Hits = ({ hits }) => {
                         <Highlight hit={hit} attribute="SELLING NAME" />
                       </h3>
                       {console.log("HIT HIT HIT", hit.prices.custNum)}
+                      {/* {
+                        Object.values(hit.prices)[
+                          Object.values(hit.prices).length - 1
+                        ].salesPrice
+                      } */}
                     </div>
                   </motion.li>
                 </div>
