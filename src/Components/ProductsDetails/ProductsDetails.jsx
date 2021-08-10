@@ -58,7 +58,6 @@ const ProductDetails = () => {
                       }
                     })}
               <p>{product.description}</p>
-              {/* <p className="btn-modal">Buy me</p> */}
             </div>
             <img src={pdp} alt="" />
           </div>
@@ -68,8 +67,13 @@ const ProductDetails = () => {
             <h3>Recommandations</h3>
           </div>
           <div className="modal-hits">
-            <Configure hitsPerPage={8} />
-            <CustomHitsModal />
+          <InstantSearch
+              indexName={window.index_desc}
+              searchClient={searchClient}
+            >
+              <Configure hitsPerPage={8} />
+              <CustomHitsModal />
+            </InstantSearch>
           </div>
           <div>
             <h3>Bought together</h3>

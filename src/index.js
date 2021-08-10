@@ -21,8 +21,8 @@ window.key = '4e0ef75741d3a0942eb841f6274fb325'
 window.index = 'dawn_transformed_users'
 
 //SORTBY
-window.index_asc = 'dawn_transformed_price_asc'
-window.index_desc = 'dawn_transformed_price_dsc'
+window.index_asc = 'dawn_transformed_az_asc'
+window.index_desc = 'dawn_transformed_az_dsc'
 
 // QUERY SUGG
 window.indexSugg = 'dawn_transformed_users_query_suggestions'
