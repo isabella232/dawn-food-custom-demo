@@ -42,7 +42,7 @@ const ProductDetails = () => {
               <h3>{product.[ 'SELLING NAME' ]}</h3>
               <p>${product.price}</p>
               <p>{product.description}</p>
-              <p className="btn-modal">Buy me</p>
+              {/* <p className="btn-modal">Buy me</p> */}
             </div>
             <img src={pdp} alt="" />
           </div>
