@@ -20,7 +20,9 @@ const CarouselHome = () => {
         </div>
       ) : (
         <div>
-          <Configure hitsPerPage={8} />
+          <Configure 
+          filters= "GLUTEN-FREE:Non-Gluten-Free"
+          hitsPerPage={8} />
           <CustomHitsModal />
         </div>
       )}

@@ -3,7 +3,7 @@ const initState = {
     searchVisible: null,
     federatedSearchVisible: false,
     catOne : false,
-    catTwo: false,
+    ourProducts: false,
     homepage: true
 }
 
@@ -19,10 +19,10 @@ switch(action.type){
                 ...state,
                 federatedSearchVisible: action.payload
             };
-    case 'CAT_ONE':
+    case 'OUR_PRODUCTS':
             return {
                 ...state,
-                catOne: action.payload
+                ourProducts: action.payload
             };
     case 'CAT_TWO':
             return {

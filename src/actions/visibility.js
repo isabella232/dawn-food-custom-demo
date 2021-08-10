@@ -10,9 +10,9 @@ export const federatedSearchVisible = (value) => (dispatch) => {
         payload: value
     })
 }
-export const catOne = (value) => (dispatch) => {
+export const ourProducts = (value) => (dispatch) => {
     dispatch({
-        type: 'CAT_ONE',
+        type: 'OUR_PRODUCTS',
         payload: value
         
     })
