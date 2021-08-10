@@ -41,10 +41,11 @@ const Hits = ({ hits }) => {
               /* console.log("HITS", Object.keys(hit.prices)); */
             }
             if (hit.prices && customer) {
+              const custNum = parseInt(customer);
               return (
                 <div>
                   <Configure
-                    filters={`"users":'${parseInt(customer)}'`}
+                    filters={`"users":'${custNum}'`}
                     analytics={false}
                     distinct
                   />
@@ -68,7 +69,7 @@ const Hits = ({ hits }) => {
                       <h3>
                         <Highlight hit={hit} attribute="SELLING NAME" />
                       </h3>
-                      <p>${hit.prices}</p>
+                      {console.log("HIT HIT HIT", hit.prices.custNum)}
                     </div>
                   </motion.li>
                 </div>
