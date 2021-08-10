@@ -14,12 +14,9 @@ const Homepage = () => {
   const { searchVisible, catOne, catTwo } = useSelector(
     (state) => state.visibility
   );
+  const { nameCustomer } = useSelector((state) => state.selectCustomer);
   return (
-    <div
-      className={`homepage-wrapper ${
-        searchVisible || catOne || catTwo ? "hidden" : "active"
-      }`}
-    >
+    <div className={`homepage-wrapper ${searchVisible ? "hidden" : "active"}`}>
       <div>
         <img src={headerBand} alt="home" />
       </div>
@@ -27,7 +24,14 @@ const Homepage = () => {
         <img src={img0} alt="home" />
       </div>
       <div className="carouselHome">
-        <h2>Our Products</h2>
+        {nameCustomer ? (
+          <h2>
+            {nameCustomer}
+            's Products
+          </h2>
+        ) : (
+          <h2>Our Products</h2>
+        )}
         <CarouselHome />
       </div>
       <div>

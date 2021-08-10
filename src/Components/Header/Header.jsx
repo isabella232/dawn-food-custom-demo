@@ -11,6 +11,7 @@ import {
   searchVisible,
   federatedSearchVisible,
 } from "../../actions/visibility";
+import { selectCustomer, nameCustomer } from "../../actions/selectCustomer";
 import { getQuery } from "../../actions/getQuery";
 
 const Header = () => {
@@ -46,6 +47,8 @@ const Header = () => {
             onClick={() => {
               dispatch(searchVisible(false));
               dispatch(federatedSearchVisible(false));
+              dispatch(selectCustomer(""));
+              dispatch(nameCustomer(""));
             }}
           />
           <ul>
