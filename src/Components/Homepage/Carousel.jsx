@@ -14,7 +14,7 @@ const CarouselHome = () => {
     <InstantSearch
         indexName={window.index}    
         searchClient={searchClient}>
-        <Configure hitsPerPage={8} ruleContexts='aviator' />
+        <Configure hitsPerPage={8}/>
         <CustomHitsModal />
     </InstantSearch> );
 }

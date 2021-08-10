@@ -27,7 +27,7 @@ const Homepage = () => {
         <img src={img0} alt="home" />
       </div>
       <div className="carouselHome">
-        <h2>Our Iconic Aviator</h2>
+        <h2>Our Products</h2>
         <CarouselHome />
       </div>
       <div>
