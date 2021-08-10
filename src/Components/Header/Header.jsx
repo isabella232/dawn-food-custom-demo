@@ -66,7 +66,6 @@ const Header = () => {
         <div
           className="search-wrapper"
           onClick={(e) => {
-            console.log(e);
             if (homepageSelector) {
               dispatch(federatedSearchVisible(true));
             }

@@ -15,9 +15,9 @@ const ProductDetails = () => {
   const searchClient = algoliasearch(window.appID, window.key);
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.productDetail);
+  const { customer } = useSelector((state) => state.selectCustomer);
 
   if (product) {
-      console.log(product.[ 'SELLING NAME' ])
     return (
       <div className="modal-inner-wrapper">
         <p
@@ -40,7 +40,23 @@ const ProductDetails = () => {
           <div className="fake-filters">
             <div className="modal-infos">
               <h3>{product.[ 'SELLING NAME' ]}</h3>
-              <p>${product.price}</p>
+              {/* <p>${product.price}</p> */}
+              {Object.values(product.prices).map((el) => {
+                      if (parseInt(el.customerNumber, 10) === parseInt(customer)) {
+                        return <p>${el.salesPrice}</p>;
+                      } else {
+                        return(
+                        <p>
+                      $
+                      {
+                        Object.values(product.prices)[
+                          Object.values(product.prices).length - 1
+                        ].salesPrice
+                      }
+                    </p>
+                        )
+                      }
+                    })}
               <p>{product.description}</p>
               {/* <p className="btn-modal">Buy me</p> */}
             </div>
