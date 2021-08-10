@@ -34,7 +34,6 @@ const Hits = ({ hits }) => {
         <ul className="hits-list">
           {hits.map((hit) => {
             if (hit.prices && customer) {
-              console.log('IF')
               return (
                 <motion.li
                   key={hit.objectID}
@@ -65,7 +64,6 @@ const Hits = ({ hits }) => {
                 </motion.li>
               );
             } else {
-              console.log('ELSE')
               return (
                 <motion.li
                   key={hit.objectID}
@@ -81,7 +79,10 @@ const Hits = ({ hits }) => {
                   }}
                 >
                   <div className="image-wrapper">
-                    <img src={hit.image_link} alt="" />
+                    <img
+                      src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                      alt=""
+                    />
                   </div>
                   <div className="infos">
                     <h3>
@@ -110,39 +111,77 @@ const Hits = ({ hits }) => {
 // PDP
 const HitsModal = ({ hits }) => {
   const dispatch = useDispatch();
+  const { customer } = useSelector((state) => state.selectCustomer);
 
   return (
     <div className="hits-wrapper">
       <ul className="hits-list hits-list-modal">
-        {hits.map((hit) => (
-          <li
-            key={hit.objectID}
-            className="hit-list"
-            onClick={() => {
-              dispatch(productDetail(hit));
-              dispatch(showModalPDP(true));
-              dispatch(federatedSearchVisible(false));
-              dispatch(searchVisible(true));
-            }}
-          >
-            <div className="image-wrapper">
-              <img src={hit.image_link} alt="" />
-            </div>
-            <div className="infos">
-              <h3>
-                <Highlight hit={hit} attribute="SELLING NAME" />
-              </h3>
-              <p>
-                ${" "}
-                {
-                  Object.values(hit.prices)[
-                    Object.values(hit.prices).length - 1
-                  ].salesPrice
-                }
-              </p>
-            </div>
-          </li>
-        ))}
+        {hits.map((hit) => {
+          if (hit.prices && customer) {
+            return (
+              <li
+                key={hit.objectID}
+                className="hit-list"
+                onClick={() => {
+                  dispatch(productDetail(hit));
+                  dispatch(showModalPDP(true));
+                  dispatch(federatedSearchVisible(false));
+                  dispatch(searchVisible(true));
+                }}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className="infos">
+                  <h3>
+                    <Highlight hit={hit} attribute="SELLING NAME" />
+                  </h3>
+                  {Object.values(hit.prices).map((el) => {
+                    if (el.userId === parseInt(customer)) {
+                      return <p>${el.salesPrice}</p>;
+                    }
+                  })}
+                </div>
+              </li>
+            );
+          } else {
+            return (
+              <li
+                key={hit.objectID}
+                className="hit-list"
+                onClick={() => {
+                  dispatch(productDetail(hit));
+                  dispatch(showModalPDP(true));
+                  dispatch(federatedSearchVisible(false));
+                  dispatch(searchVisible(true));
+                }}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className="infos">
+                  <h3>
+                    <Highlight hit={hit} attribute="SELLING NAME" />
+                  </h3>
+                  <p>
+                    $
+                    {
+                      Object.values(hit.prices)[
+                        Object.values(hit.prices).length - 1
+                      ].salesPrice
+                    }
+                  </p>
+                </div>
+              </li>
+            );
+          }
+        })}
       </ul>
     </div>
   );

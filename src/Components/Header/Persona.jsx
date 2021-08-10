@@ -1,13 +1,13 @@
 import React from "react";
 import Select from "react-select";
 import { useDispatch } from "react-redux";
-import { selectCustomer } from "../../actions/selectCustomer";
+import { selectCustomer, nameCustomer } from "../../actions/selectCustomer";
 
 const SelectCustomer = () => {
   const options = [
-    { value: "1018356", label: "TIFFANY" },
-    { value: "1017523", label: "BEN" },
-    { value: "1005538", label: "MARC" },
+    { value: "1018356", label: "Tiffany" },
+    { value: "1017523", label: "Ben" },
+    { value: "1005538", label: "Marc" },
   ];
 
   //STYLE SELECT
@@ -70,6 +70,7 @@ const SelectCustomer = () => {
 
   const selectValue = (e) => {
     dispatch(selectCustomer(e.value));
+    dispatch(nameCustomer(e.label));
   };
 
   return (
