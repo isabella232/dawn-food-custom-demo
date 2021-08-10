@@ -15,6 +15,7 @@ Alternatively, you may use [Yarn](https://http://yarnpkg.com/):
 
 ```sh
 yarn install
+
 yarn start
 ```
 </br>
