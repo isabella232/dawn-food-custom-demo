@@ -10,6 +10,7 @@ import SelectPersona from "./Persona";
 import {
   searchVisible,
   federatedSearchVisible,
+  ourProducts
 } from "../../actions/visibility";
 import { selectCustomer, nameCustomer } from "../../actions/selectCustomer";
 import { getQuery } from "../../actions/getQuery";
@@ -17,6 +18,10 @@ import { getQuery } from "../../actions/getQuery";
 const Header = () => {
   const federatedSearchVisibleSelector = useSelector(
     (state) => state.visibility.federatedSearchVisible
+  );
+
+  const ourProductsMethod = useSelector(
+    (state) => state.visibility.ourProducts
   );
 
   const dispatch = useDispatch();
@@ -47,13 +52,23 @@ const Header = () => {
             onClick={() => {
               dispatch(searchVisible(false));
               dispatch(federatedSearchVisible(false));
+              dispatch(ourProducts(false));
               dispatch(selectCustomer(""));
               dispatch(nameCustomer(""));
             }}
           />
           <ul>
-            <li>HOME</li>
-            <li>PRODUCTS</li>
+            <li
+              onClick={() => {
+                dispatch(searchVisible(true));
+                dispatch(federatedSearchVisible(false));
+                dispatch(ourProducts(true));
+                dispatch(selectCustomer(""));
+                dispatch(nameCustomer(""));
+              }}
+            >
+              OUR DAWN PRODUCTS
+            </li>
             <li>CUSTOMER WE SERVE</li>
             <li>CAMPAIGN</li>
             <li>INSIGHTS</li>

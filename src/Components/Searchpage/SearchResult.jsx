@@ -35,7 +35,9 @@ const SearchResults = () => {
 
   // REDUX STATE & ACTIONS
   const dispatch = useDispatch();
-  const { searchVisible, homepage } = useSelector((state) => state.visibility);
+  const { searchVisible, homepage, ourProducts } = useSelector(
+    (state) => state.visibility
+  );
   const federatedvisble = useSelector(
     (state) => state.visibility.federatedSearchVisible
   );
@@ -48,8 +50,6 @@ const SearchResults = () => {
   const [isDynamicFactesOn, setIsDynamicFactesOn] = useState(false);
   const { customer } = useSelector((state) => state.selectCustomer);
 
-
-  
 
   return (
     <div className="searchResult-wrapper">
@@ -101,10 +101,21 @@ const SearchResults = () => {
               <Configure
                 filters={`"users":'${customer}'`}
                 userToken={customer}
-              
                 hitsPerPage={21}
                 query={query}
               />
+            ) : (
+              ""
+            )}
+            {ourProducts ? (
+              <div>
+                <Configure
+                  filters="BRAND:'DAWN'"
+                  userToken={customer}
+                  hitsPerPage={21}
+                  query={query}
+                />
+              </div>
             ) : (
               ""
             )}
