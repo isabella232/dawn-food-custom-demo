@@ -28,13 +28,13 @@ const Hits = ({ hits }) => {
     },
   };
 
- 
-
   return (
     <AnimateSharedLayout>
       <div className="hits-wrapper">
         <ul className="hits-list">
           {hits.map((hit) => {
+            if (hit.prices && customer) {
+              console.log('IF')
               return (
                 <motion.li
                   key={hit.objectID}
@@ -56,17 +56,49 @@ const Hits = ({ hits }) => {
                     <h3>
                       <Highlight hit={hit} attribute="SELLING NAME" />
                     </h3>
-                {Object.values(hit.prices).map(el => {
-                  if(el.userId === parseInt(customer)){
-                   return <p>${el.salesPrice}</p>
-                  } 
-                })}
-                   <p>${Object.values(hit.prices)[Object.values(hit.prices).length - 1].salesPrice}</p>
-       
+                    {Object.values(hit.prices).map((el) => {
+                      if (el.userId === parseInt(customer)) {
+                        return <p>${el.salesPrice}</p>;
+                      }
+                    })}
                   </div>
                 </motion.li>
               );
-            
+            } else {
+              console.log('ELSE')
+              return (
+                <motion.li
+                  key={hit.objectID}
+                  variants={listItem}
+                  initial="hidden"
+                  animate="show"
+                  className="hit-list"
+                  onClick={() => {
+                    dispatch(productDetail(hit));
+                    dispatch(showModalPDP(true));
+                    dispatch(federatedSearchVisible(false));
+                    dispatch(searchVisible(true));
+                  }}
+                >
+                  <div className="image-wrapper">
+                    <img src={hit.image_link} alt="" />
+                  </div>
+                  <div className="infos">
+                    <h3>
+                      <Highlight hit={hit} attribute="SELLING NAME" />
+                    </h3>
+                    <p>
+                      $
+                      {
+                        Object.values(hit.prices)[
+                          Object.values(hit.prices).length - 1
+                        ].salesPrice
+                      }
+                    </p>
+                  </div>
+                </motion.li>
+              );
+            }
           })}
         </ul>
         <ModalProduct />
