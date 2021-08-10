@@ -144,48 +144,49 @@ const CategRefinementList = ({ items, refine }) => {
 
 const CustomCategRefinementList = connectRefinementList(CategRefinementList);
 
-// Size Filter
-// const SizeRefinementList = ({ items, refine }) => {
-//     const [size, setSize] = useState(true);
-//     return (
-//         <div className="filters-content">
-//             <div
-//                 onClick={() => {
-//                     setSize(!size);
-//                 }}
-//                 className="title"
-//             >
-//                 <h3>Size</h3>
-//                 <p>-</p>
-//             </div>
-//             <ul
-//                 className={`filter-list-content ${size ? 'active-filters' : 'hidden-filters'
-//                     }`}
-//             >
-//                 {items.map(item => (
-//                     <li className="filter-list" key={item.label}>
-//                         <button
-//                             className={`button-filter ${
-//                                 item.isRefined ? 'refined-filter' : ''
-//                             }`}
-//                             href="#"
-//                             style={{ fontWeight: item.isRefined ? 'bold' : '' }}
-//                             onClick={event => {
-//                                 event.preventDefault();
-//                                 refine(item.value);
-//                             }}
-//                         >
-//                             {item.label}
-//                         </button>
-//                     </li>
-//                 ))}
-//             </ul>
-//             <div className="line"></div>
-//         </div>
-//     );
-// };
+// Color Filter
+const ColorRefinementList = ({ items, refine }) => {
+  const [size, setSize] = useState(true);
+  return (
+    <div className="filters-content">
+      <div
+        onClick={() => {
+          setSize(!size);
+        }}
+        className="title"
+      >
+        <h3>Color</h3>
+        <p>-</p>
+      </div>
+      <ul
+        className={`filter-list-content ${
+          size ? "active-filters" : "hidden-filters"
+        }`}
+      >
+        {items.map((item) => (
+          <li className="filter-list" key={item.label}>
+            <button
+              className={`button-filter ${
+                item.isRefined ? "refined-filter" : ""
+              }`}
+              href="#"
+              style={{ fontWeight: item.isRefined ? "bold" : "" }}
+              onClick={(event) => {
+                event.preventDefault();
+                refine(item.value);
+              }}
+            >
+              {item.label}
+            </button>
+          </li>
+        ))}
+      </ul>
+      <div className="line"></div>
+    </div>
+  );
+};
 
-// const CustomSizeRefinementList = connectRefinementList(SizeRefinementList);
+const CustomColorRefinementList = connectRefinementList(ColorRefinementList);
 
 // CATEGORIES
 // const CategoriesRefinementList = ({ items, refine }) => {
@@ -425,8 +426,8 @@ const CustomFilters = ({
           <div>
             <BrandRefinementLists attribute="BRAND" />
             <CustomCategRefinementList attribute="L1 - CATEGORY" />
-            {/* <CustomFrameShapeRefinementList attribute="FrameShapeDescription" />
-                        <CustomMaterialRefinementList attribute="FRAMEMATERIAL" />
+            <CustomColorRefinementList attribute="COLOR" />
+            {/*<CustomMaterialRefinementList attribute="FRAMEMATERIAL" />
                         <CustomGenderRefinementList attribute="GENDER" />
                         <CustomColorRefinementList attribute="color" />
                         <CustomSizeRefinementList attribute="size" /> */}
