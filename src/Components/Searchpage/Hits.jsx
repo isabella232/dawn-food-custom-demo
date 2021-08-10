@@ -56,8 +56,12 @@ const Hits = ({ hits }) => {
                     <h3>
                       <Highlight hit={hit} attribute="SELLING NAME" />
                     </h3>
-                
-                    <p>${Object.values(hit.prices)[Object.values(hit.prices).length - 1].salesPrice}</p>
+                {Object.values(hit.prices).map(el => {
+                  if(el.userId === parseInt(customer)){
+                   return <p>${el.salesPrice}</p>
+                  } 
+                })}
+                   <p>${Object.values(hit.prices)[Object.values(hit.prices).length - 1].salesPrice}</p>
        
                   </div>
                 </motion.li>
