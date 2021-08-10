@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Highlight, SortBy, Stats, connectHits } from "react-instantsearch-dom";
+import { Highlight, SortBy, Stats, connectHits, Index } from "react-instantsearch-dom";
 import { showModalPDP, productDetail } from "../../actions/productDetail";
 import {
   federatedSearchVisible,
@@ -38,11 +38,13 @@ const Hits = ({ hits }) => {
               {
                 /* console.log("HITS", hit.prices); */
               }
-              let hitsArray = {
+              {
+                /* let hitsArray = {
                 id: Object.keys(hit.prices),
                 price: hit.prices.Object.keys(hit.prices).salesPrice,
               };
-              console.log("HITS ARRAY", hitsArray);
+              console.log("HITS ARRAY", hitsArray); */
+              }
 
               {
                 /* console.log(
@@ -51,28 +53,33 @@ const Hits = ({ hits }) => {
                   .salesPrice
               ); */
               }
+
+              {/* CustomerIds array */}
+              let custIdArray = []
+              console.log("HIT", hit.users)
               return (
-                <motion.li
-                  key={hit.objectID}
-                  variants={listItem}
-                  initial="hidden"
-                  animate="show"
-                  className="hit-list"
-                  onClick={() => {
-                    dispatch(productDetail(hit));
-                    dispatch(showModalPDP(true));
-                    dispatch(federatedSearchVisible(false));
-                    dispatch(searchVisible(true));
-                  }}
-                >
-                  <div className="image-wrapper">
-                    <img src={hit.image_link} alt="" />
-                  </div>
-                  <div className="infos">
-                    <h3>
-                      <Highlight hit={hit} attribute="SELLING NAME" />
-                    </h3>
-                    {/* {hitsArray.map((id) => {
+                <Index indexName={window.usersId}>
+                  <motion.li
+                    key={hit.objectID}
+                    variants={listItem}
+                    initial="hidden"
+                    animate="show"
+                    className="hit-list"
+                    onClick={() => {
+                      dispatch(productDetail(hit));
+                      dispatch(showModalPDP(true));
+                      dispatch(federatedSearchVisible(false));
+                      dispatch(searchVisible(true));
+                    }}
+                  >
+                    <div className="image-wrapper">
+                      <img src={hit.image_link} alt="" />
+                    </div>
+                    <div className="infos">
+                      <h3>
+                        <Highlight hit={hit} attribute="SELLING NAME" />
+                      </h3>
+                      {/* {hitsArray.map((id) => {
                       console.log("ID", id, customer);
                       if (id === customer) {
                         console.log("EGAL");
@@ -94,8 +101,9 @@ const Hits = ({ hits }) => {
                         }
                       }
                     })} */}
-                  </div>
-                </motion.li>
+                    </div>
+                  </motion.li>
+                </Index>
               );
             } else {
               return "";
