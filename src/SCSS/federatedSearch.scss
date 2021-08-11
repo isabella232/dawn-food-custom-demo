@@ -2,60 +2,104 @@
 @import "./mixin.scss";
 
 .federatedSearch-wrapper {
-    display: grid;
-    grid-template-columns: 25% 75%;
+  display: grid;
+  grid-template-columns: 25% 75%;
 }
 
 .federatedSearch {
-    width: 90vw;
-    height: 80vh;
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 2rem;
-    margin: 0rem auto;
-    overflow-x: hidden;
+  width: 90vw;
+  height: 80vh;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2rem;
+  margin: 0rem auto;
+  overflow-x: hidden;
 
-    .searchBox-wrapper {
-        form {
-            width: 90%;
-        }
+  .searchBox-wrapper {
+    form {
+      width: 90%;
     }
+  }
 }
 
 .federatedSearch-products {
-    .federated-title {
-        margin-left: 3rem;
-        margin-bottom: 1rem;
-    }
+  .federated-title {
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .federatedSearch-suggestions {
-    .suggestions-container {
-        display: flex;
-        flex-direction: column;
+  .suggestions-container {
+    display: flex;
+    flex-direction: column;
 
-        .suggestion {
-            border: none;
-            padding: 0;
-            margin: 1rem 0;
+    .suggestion {
+      border: none;
+      padding: 0;
+      margin: 1rem 0;
 
-            p {
-                text-transform: lowercase;
-                font-size: 1.2rem;
-            }
-        }
+      p {
+        text-transform: lowercase;
+        font-size: 1.2rem;
+      }
     }
+  }
 }
 
 .container-federated {
-    position: absolute;
-    z-index: 999;
-    top: 0;
-    left: 0;
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translate(0%, 15%);
+}
+
+// INJECTED CONTENT
+
+.separator {
+  height: 1px;
+  background-color: $seventh-color;
+  width: 90%;
+  margin: 1rem 0;
+}
+
+.injected-content-wrapper {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding: 0.5rem;
+  border: 1px solid $seventh-color;
+
+  img {
     width: 100%;
-    transform: translate(0%, 15%);
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 3px;
+  }
+  h3 {
+    text-align: center;
+    font-size: 1rem;
+    margin: 0.5rem;
+  }
+  a {
+    @include btn;
+    display: flex;
+    justify-content: center;
+    font-family: $main-font;
+    font-weight: bold;
+
+    &:hover {
+      @include btn-hover;
+    }
+  }
 }
