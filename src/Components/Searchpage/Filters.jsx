@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 // ALGOLIA'S IMPORT
 import {
@@ -413,6 +414,7 @@ const CustomFilters = ({
   isDynamicFactesOn,
   setIsDynamicFactesOn,
 }) => {
+  const { ourProducts } = useSelector((state) => state.visibility);
   return (
     <div
       className={`filters-wrapper ${
@@ -425,17 +427,25 @@ const CustomFilters = ({
           ""
         ) : (
           <div>
-            {/* <ExperimentalDynamicWidgets
-            // fallbackComponent={Menu}
-            > */}
-              <BrandRefinementLists attribute="BRAND" />
-              <CustomCategRefinementList attribute="L1 - CATEGORY" />
-              <CustomColorRefinementList attribute="COLOR" />
-              {/*<CustomMaterialRefinementList attribute="FRAMEMATERIAL" />
+            {ourProducts ? (
+              <ExperimentalDynamicWidgets
+              // fallbackComponent={Menu}
+              >
+                <BrandRefinementLists attribute="BRAND" />
+                <CustomCategRefinementList attribute="L1 - CATEGORY" />
+                <CustomColorRefinementList attribute="COLOR" />
+                {/*<CustomMaterialRefinementList attribute="FRAMEMATERIAL" />
                         <CustomGenderRefinementList attribute="GENDER" />
                         <CustomColorRefinementList attribute="color" />
                         <CustomSizeRefinementList attribute="size" /> */}
-            {/* </ExperimentalDynamicWidgets> */}
+              </ExperimentalDynamicWidgets>
+            ) : (
+              <div>
+                <BrandRefinementLists attribute="BRAND" />
+                <CustomCategRefinementList attribute="L1 - CATEGORY" />
+                <CustomColorRefinementList attribute="COLOR" />
+              </div>
+            )}
           </div>
         )}
 
