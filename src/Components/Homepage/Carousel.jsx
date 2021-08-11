@@ -20,9 +20,7 @@ const CarouselHome = () => {
         </div>
       ) : (
         <div>
-          <Configure 
-          filters= "GLUTEN-FREE:Non-Gluten-Free"
-          hitsPerPage={8} />
+          <Configure filters="'L1 - CATEGORY':'Bakery Mixes'" hitsPerPage={8} />
           <CustomHitsModal />
         </div>
       )}
