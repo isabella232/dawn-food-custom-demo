@@ -1,17 +1,21 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import {
+  connectSearchBox,
+  createVoiceSearchHelper,
+} from "react-instantsearch-dom";
+
 // COMPONENT IMPORT
 import logo from "../../Assets/Images/logo.jpeg";
 import CustomSearchBox from "../Searchpage/SearchBox";
-import { VoiceSearch } from 'react-instantsearch-dom';
 
 // import headerUp from '../../Assets/Images/headerUp.png';
 import SelectPersona from "./Persona";
 import {
   searchVisible,
   federatedSearchVisible,
-  ourProducts
+  ourProducts,
 } from "../../actions/visibility";
 import { selectCustomer, nameCustomer } from "../../actions/selectCustomer";
 import { getQuery } from "../../actions/getQuery";
@@ -91,11 +95,66 @@ const Header = () => {
           }}
         >
           <CustomSearchBox />
-          <VoiceSearch searchAsYouSpeak={true} language={'en-US'} />
+          <CustomVoiceSearch />
         </div>
       </div>
     </header>
   );
 };
+
+class VoiceSearch extends React.Component {
+  componentDidMount() {
+    const { refine } = this.props;
+    this.voiceSearchHelper = createVoiceSearchHelper({
+      searchAsYouSpeak: false,
+      onQueryChange: (query) => refine(query),
+      onStateChange: () => {
+        this.setState(this.voiceSearchHelper.getState());
+      },
+    });
+    this.setState(this.voiceSearchHelper.getState());
+  }
+
+  componentWillUnmount() {
+    if (this.voiceSearchHelper) {
+      this.voiceSearchHelper.dispose();
+    }
+  }
+
+  render() {
+    if (!this.voiceSearchHelper) {
+      return null;
+    }
+
+    const { status, transcript, isSpeechFinal, errorCode } = this.state;
+    const {
+      isBrowserSupported,
+      isListening,
+      toggleListening,
+    } = this.voiceSearchHelper;
+
+    return (
+      <div>
+        <button
+          type="button"
+          title="Voice Search"
+          onClick={toggleListening}
+          disabled={!isBrowserSupported()}
+        >
+          {isListening() ? "Stop" : "Start"}
+        </button>
+        <div>
+          {/* <p>status: {status}</p> */}
+          <p>transcript: {transcript}</p>
+          {/*<p>isSpeechFinal: {isSpeechFinal ? "true" : "false"}</p>
+          <p>errorCode: {errorCode}</p>
+          <p>isListening: {isListening() ? "true" : "false"}</p>
+          <p>isBrowserSupported: {isBrowserSupported() ? "true" : "false"}</p> */}
+        </div>
+      </div>
+    );
+  }
+}
+const CustomVoiceSearch = connectSearchBox(VoiceSearch);
 
 export default Header;
