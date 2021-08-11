@@ -19,6 +19,7 @@ import {
 } from "../../actions/visibility";
 import { selectCustomer, nameCustomer } from "../../actions/selectCustomer";
 import { getQuery } from "../../actions/getQuery";
+import micro from "../../Assets/Images/micro.png";
 
 const Header = () => {
   const federatedSearchVisibleSelector = useSelector(
@@ -134,23 +135,19 @@ class VoiceSearch extends React.Component {
     } = this.voiceSearchHelper;
 
     return (
-      <div>
-        <button
-          type="button"
-          title="Voice Search"
+      <div
+        style={{
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img
+          className="microImage"
           onClick={toggleListening}
-          disabled={!isBrowserSupported()}
-        >
-          {isListening() ? "Stop" : "Start"}
-        </button>
-        <div>
-          {/* <p>status: {status}</p> */}
-          <p>transcript: {transcript}</p>
-          {/*<p>isSpeechFinal: {isSpeechFinal ? "true" : "false"}</p>
-          <p>errorCode: {errorCode}</p>
-          <p>isListening: {isListening() ? "true" : "false"}</p>
-          <p>isBrowserSupported: {isBrowserSupported() ? "true" : "false"}</p> */}
-        </div>
+          src={micro}
+          alt=""
+        />
       </div>
     );
   }
