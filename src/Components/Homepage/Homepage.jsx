@@ -30,7 +30,7 @@ const Homepage = () => {
             's Products
           </h2>
         ) : (
-          <h2>Our Gluten Free Products</h2>
+          <h2>Our Bakery Mixes </h2>
         )}
         <CarouselHome />
       </div>
