@@ -96,7 +96,7 @@ const Header = () => {
           }}
         >
           <CustomSearchBox />
-          <CustomVoiceSearch />
+          {/* <CustomVoiceSearch /> */}
         </div>
       </div>
     </header>
@@ -135,19 +135,21 @@ class VoiceSearch extends React.Component {
     } = this.voiceSearchHelper;
 
     return (
-      <div
-        style={{
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div style={{display: "flex", alignContent: 'center', justifyContent: 'center' }}>
         <img
           className="microImage"
           onClick={toggleListening}
           src={micro}
           alt=""
         />
+        <div style={{ display: "none" }}>
+          {/* <p>status: {status}</p> */}
+          <p>transcript: {transcript}</p>
+          {/*<p>isSpeechFinal: {isSpeechFinal ? "true" : "false"}</p>
+          <p>errorCode: {errorCode}</p>
+          <p>isListening: {isListening() ? "true" : "false"}</p>
+          <p>isBrowserSupported: {isBrowserSupported() ? "true" : "false"}</p> */}
+        </div>
       </div>
     );
   }
