@@ -3,6 +3,7 @@ import React, { useState } from "react";
 // ALGOLIA'S IMPORT
 import {
   connectRefinementList,
+  ExperimentalDynamicWidgets,
   // connectHierarchicalMenu,
   // connectRange,
 } from "react-instantsearch-dom";
@@ -424,13 +425,17 @@ const CustomFilters = ({
           ""
         ) : (
           <div>
-            <BrandRefinementLists attribute="BRAND" />
-            <CustomCategRefinementList attribute="L1 - CATEGORY" />
-            <CustomColorRefinementList attribute="COLOR" />
-            {/*<CustomMaterialRefinementList attribute="FRAMEMATERIAL" />
+            {/* <ExperimentalDynamicWidgets
+            // fallbackComponent={Menu}
+            > */}
+              <BrandRefinementLists attribute="BRAND" />
+              <CustomCategRefinementList attribute="L1 - CATEGORY" />
+              <CustomColorRefinementList attribute="COLOR" />
+              {/*<CustomMaterialRefinementList attribute="FRAMEMATERIAL" />
                         <CustomGenderRefinementList attribute="GENDER" />
                         <CustomColorRefinementList attribute="color" />
                         <CustomSizeRefinementList attribute="size" /> */}
+            {/* </ExperimentalDynamicWidgets> */}
           </div>
         )}
 
