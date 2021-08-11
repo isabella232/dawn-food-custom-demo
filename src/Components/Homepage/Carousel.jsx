@@ -20,7 +20,7 @@ const CarouselHome = () => {
         </div>
       ) : (
         <div>
-          <Configure filters="L1 - CATEGORY:'Bakery Mixes'" hitsPerPage={8} />
+          <Configure filters="'L1 - CATEGORY':'Bakery Mixes'" hitsPerPage={8} />
           <CustomHitsModal />
         </div>
       )}
