@@ -32,7 +32,7 @@ const ProductDetails = () => {
           <div className="product-side">
             <div className="modal-images">
               <img
-                src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                src="https://www.supermarketperimeter.com/ext/resources/images/2020/4/Dawn_Donuts.jpg?t=1586184282&width=1080"
                 alt=""
               />
             </div>
@@ -43,10 +43,10 @@ const ProductDetails = () => {
               {/* <p>${product.price}</p> */}
               {Object.values(product.prices).map((el) => {
                       if (el.userId === parseInt(customer)) {
-                        return <p>${el.salesPrice}</p>;
+                        return <p style={{ fontSize: '2em' }}>${el.salesPrice}</p>;
                       }
                     })}
-              {customer ? ('') : ( <p>
+              {customer ? ('') : ( <p style={{ fontSize: '2em' }}>
                       $
                       {
                         Object.values(product.prices)[

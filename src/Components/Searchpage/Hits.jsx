@@ -50,7 +50,7 @@ const Hits = ({ hits }) => {
                 >
                   <div className="image-wrapper">
                     <img
-                      src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                      src="https://www.supermarketperimeter.com/ext/resources/images/2020/4/Dawn_Donuts.jpg?t=1586184282&width=1080"
                       alt=""
                     />
                   </div>
@@ -83,7 +83,7 @@ const Hits = ({ hits }) => {
                 >
                   <div className="image-wrapper">
                     <img
-                      src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                      src="https://www.supermarketperimeter.com/ext/resources/images/2020/4/Dawn_Donuts.jpg?t=1586184282&width=1080"
                       alt=""
                     />
                   </div>
@@ -134,7 +134,7 @@ const HitsModal = ({ hits }) => {
               >
                 <div className="image-wrapper">
                   <img
-                    src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                    src="https://www.supermarketperimeter.com/ext/resources/images/2020/4/Dawn_Donuts.jpg?t=1586184282&width=1080"
                     alt=""
                   />
                 </div>
@@ -177,7 +177,7 @@ const HitsModal = ({ hits }) => {
               >
                 <div className="image-wrapper">
                   <img
-                    src="https://www.foodbev.com/wp-content/uploads/2020/01/Dawn-Foods.jpg"
+                    src="https://www.supermarketperimeter.com/ext/resources/images/2020/4/Dawn_Donuts.jpg?t=1586184282&width=1080"
                     alt=""
                   />
                 </div>
