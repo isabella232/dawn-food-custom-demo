@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 // ALGOLIA'S IMPORT
 import {
     connectSearchBox,
-    VoiceSearch,
     connectCurrentRefinements
 } from 'react-instantsearch-dom';
 import { getQuery, getInput } from '../../actions/getQuery';
@@ -64,7 +63,6 @@ const SearchBox = ({ refine }) => {
                         />
                     </svg>
                 </form>
-                {/* <VoiceSearch searchAsYouSpeak={true} language={'en-US'} /> */}
             </div>
           
         

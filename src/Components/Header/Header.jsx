@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 // COMPONENT IMPORT
 import logo from "../../Assets/Images/logo.jpeg";
 import CustomSearchBox from "../Searchpage/SearchBox";
+import { VoiceSearch } from 'react-instantsearch-dom';
 
 // import headerUp from '../../Assets/Images/headerUp.png';
 import SelectPersona from "./Persona";
@@ -90,6 +91,7 @@ const Header = () => {
           }}
         >
           <CustomSearchBox />
+          <VoiceSearch searchAsYouSpeak={true} language={'en-US'} />
         </div>
       </div>
     </header>
