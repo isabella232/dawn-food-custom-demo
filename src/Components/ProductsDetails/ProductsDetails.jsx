@@ -104,7 +104,7 @@ const ProductDetails = () => {
           </div>
           <div className="modal-hits">
           {customer ? (<InstantSearch
-              indexName={window.index_asc}
+              indexName={window.index}
               searchClient={searchClient}
             >
             {customer ? (
