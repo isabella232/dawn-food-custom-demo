@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 // ALGOLIA IMPORT
 import { Configure, Index, QueryRuleCustomData } from "react-instantsearch-dom";
@@ -8,6 +9,7 @@ import { CustomHits } from "../Searchpage/Hits";
 import CustomSuggestions from "../Searchpage/Suggestions";
 
 const FederatedSearch = () => {
+  const { customer } = useSelector((state) => state.selectCustomer);
   return (
     <div className="federatedSearch">
       <div className="federatedSearch-wrapper">
@@ -44,7 +46,17 @@ const FederatedSearch = () => {
           <div className="product-federated-header">
             <h3 className="federated-title">Products</h3>
           </div>
-          <Configure hitsPerPage={6} />
+          {customer ? (
+            <Configure
+              filters={`"users":'${customer}'`}
+              userToken={customer}
+              hitsPerPage={6}
+            />
+          ) : (
+            <Configure
+              hitsPerPage={6}
+            />
+          )}
           <CustomHits />
         </div>
       </div>
