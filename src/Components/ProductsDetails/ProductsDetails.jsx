@@ -69,25 +69,69 @@ const ProductDetails = () => {
             <h3>Recommandations</h3>
           </div>
           <div className="modal-hits">
-          <InstantSearch
+                  {customer ? (<InstantSearch
+              indexName={window.index}
+              searchClient={searchClient}
+            >
+            {customer ? (
+              <Configure
+                filters={`"users":'${customer}'`}
+                userToken={customer}
+                hitsPerPage={21}
+              />
+            ) : (
+              <Configure hitsPerPage={8} />
+            )}
+              <CustomHitsModal />
+            </InstantSearch>) : (<InstantSearch
               indexName={window.index_desc}
               searchClient={searchClient}
             >
+            {customer ? (
+              <Configure
+                filters={`"users":'${customer}'`}
+                userToken={customer}
+                hitsPerPage={21}
+              />
+            ) : (
               <Configure hitsPerPage={8} />
+            )}
               <CustomHitsModal />
-            </InstantSearch>
+            </InstantSearch>)}
           </div>
           <div>
             <h3>Bought together</h3>
           </div>
           <div className="modal-hits">
-            <InstantSearch
-              indexName={window.index_asc}
+          {customer ? (<InstantSearch
+              indexName={window.index}
               searchClient={searchClient}
             >
+            {customer ? (
+              <Configure
+                filters={`"users":'${customer}'`}
+                userToken={customer}
+                hitsPerPage={21}
+              />
+            ) : (
               <Configure hitsPerPage={8} />
+            )}
               <CustomHitsModal />
-            </InstantSearch>
+            </InstantSearch>) : (<InstantSearch
+              indexName={window.index_desc}
+              searchClient={searchClient}
+            >
+            {customer ? (
+              <Configure
+                filters={`"users":'${customer}'`}
+                userToken={customer}
+                hitsPerPage={21}
+              />
+            ) : (
+              <Configure hitsPerPage={8} />
+            )}
+              <CustomHitsModal />
+            </InstantSearch>)}
           </div>
         </div>
       </div>
