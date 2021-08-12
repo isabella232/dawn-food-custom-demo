@@ -147,7 +147,7 @@ const HitsModal = ({ hits }) => {
                       return <p>${el.salesPrice}</p>;
                     }
                   })}
-                  ,{" "}
+                  {" "}
                   {customer ? (
                     ""
                   ) : (
