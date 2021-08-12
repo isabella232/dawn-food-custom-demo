@@ -146,8 +146,7 @@ const HitsModal = ({ hits }) => {
                     if (el.userId === parseInt(customer)) {
                       return <p>${el.salesPrice}</p>;
                     }
-                  })}
-                  {" "}
+                  })}{" "}
                   {customer ? (
                     ""
                   ) : (

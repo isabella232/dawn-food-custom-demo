@@ -12,6 +12,7 @@ import {
   SortBy,
   connectCurrentRefinements,
   InstantSearch,
+  HitsPerPage,
 } from "react-instantsearch-dom";
 
 //COMPONENTS
@@ -49,7 +50,6 @@ const SearchResults = () => {
   const [filterAnim, setFilterAnim] = useState(true);
   const [isDynamicFactesOn, setIsDynamicFactesOn] = useState(false);
   const { customer } = useSelector((state) => state.selectCustomer);
-
 
   return (
     <div className="searchResult-wrapper">
@@ -123,7 +123,6 @@ const SearchResults = () => {
               <Configure
                 // userToken={customer}
                 // enablePersonalization={true}
-                hitsPerPage={21}
                 query={query}
               />
             ) : (
@@ -138,6 +137,16 @@ const SearchResults = () => {
             />
             <div className="hits-panel-wrapper">
               <SortAndStat />
+              <div style={{display:"flex", justifyContent:"center", marginBottom: "1em"}}>
+                <HitsPerPage
+                  defaultRefinement={6}
+                  items={[
+                    { value: 6, label: "Show 6 products" },
+                    { value: 12, label: "Show 12 products" },
+                    { value: 15, label: "Show 5 products" },
+                  ]}
+                />
+              </div>
               <CustomCurrentRefinements
                 transformItems={(items) =>
                   items.filter((item) => item.attribute !== "price")
